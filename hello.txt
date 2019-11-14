@@ -1,0 +1,61 @@
+MyBatis的多表操作：
+
+
+
+#一对一
+@将resultType改为resultMap="id"
+@<resultMap id="xxx" type="xxx">
+<id column="" property="">/<id>  *设置主键的标签，column为数据库查询出的结果的列名,property为对象的属性名
+  <result column="username" property="user.username"></result> *设置普通结果映射
+</resultMap>
+
+
+#一对多
+ <!-- 配置集合
+                  property：集合名称
+                  ofType:集合类型
+            -->
+        <id column="uid" property="id"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="birthday" property="birthday"></result>
+
+            <collection property="orderList" ofType="order">
+                <id column="oid" property="id"></id>
+                <result column="ordertime" property="ordertime"></result>
+                <result column="total" property="total"></result>
+            </collection>
+
+
+
+#多对多
+实现步骤与一对多一致
+
+sql语句需从多个表和关系表中查询
+
+Mybatis注解开发
+
+@Insert：实现新增
+
+
+@Update：实现更新
+
+
+@Delete：实现删除
+
+
+@Select：实现查询
+
+
+@Result：实现结果集封装
+
+
+@Results：可以与@Result 一起使用，封装多个结果集
+
+
+@One：实现一对一结果集封装
+
+
+@Many：实现一对多结果集封装
+
+
